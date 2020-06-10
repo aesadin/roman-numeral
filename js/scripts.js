@@ -3,31 +3,32 @@ $(document).ready(function() {
   $("#form-one").submit(function(event) {
     event.preventDefault();
     
-    const vowels = ['a', 'e','i','o', 'u'];
-    const consonants = ['b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y'];
-    const userWord = "apple";
-    pigLatin(userWord);
-    function pigLatin (userWord) {  //checks to see if first char is vowel
-      let newArray = userWord.split("");
-      let outputArray = newArray.slice();
+    const userInput = $("input#sentence").val();
+    const vowels = ["a", "e", "i", "o", 'u'];   
+    
+    function pigLatin (inputWord) {  
+      let inputArray = inputWord.split(""); 
       let output;
-      
-      vowels.forEach(function(vowel){  //if first char is a vowel, removes the vowel and adds the vowel to the end of the word
-        if (newArray[0]===vowel) {
-          outputArray.push(outputArray.shift());
-          outputArray.push("w","a","y");
-          output = outputArray.join("");
-        }
-      });
-      console.log(output);
+      for (i = 0; i < inputArray.length; i++) {
+        if (vowels.indexOf(inputArray[i]) !== -1) {  //breaks if there is a vowel 
+          break;
+          }
+        if (inputArray.slice(i, i+2).join("") === "qu") { //
+          i++;
+        	}
+      }
+     	if (i === 0) {
+      output = inputArray.join("") + "way"   // fixes apple
+      }
+      else {
+      output = inputArray.slice(i).join("") + inputArray.slice(0, i).join("") + "ay"  //
+      }
+      console.log(output);    //
       return output;
+     	}
 
-      consonants.forEach(function(consonant) {
-        if (newArray[0]===consonant) {
-          let consecutiveCons
-          for (i = 1)
-        }
-      });
-    }
+    
+   $("#show-me").append("<li>" + pigLatin(userInput) + "</li>");
+    
   });
 });
