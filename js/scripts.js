@@ -24,7 +24,8 @@ $(document).ready(function() {
 
       consonants.forEach(function(consonant) {
         if (newArray[0]===consonant) {
-          for (i =)
+          let consecutiveCons
+          for (i = 1)
         }
       });
     }
