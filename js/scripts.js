@@ -37,7 +37,6 @@ $(document).ready(function() {
   else {
     alert ("enter a number you rascal")
   }
-    
   });
 });
 
@@ -48,4 +47,4 @@ $(document).ready(function() {
 } else {
   for(let i=0; i<elements; i++) {
     array.push(i * num2);
-  }//*/
+  }*/
